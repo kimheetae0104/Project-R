@@ -1,5 +1,6 @@
 package Test;
 
+// R 연동해서 import 하기 
 import org.rosuda.JRI.REXP;
 import org.rosuda.JRI.Rengine;
 
@@ -15,6 +16,7 @@ public class REngineTest02 {
 			System.out.println("Loding R engine was failed");
 			return;
 		}
+		// R 처럼 입력하는 부분 
 		re.eval("a <- 3",true);
 		re.eval("b <- 4.5", true);
 		re.eval("c <- a+b", false);
