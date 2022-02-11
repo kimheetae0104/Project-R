@@ -1,3 +1,11 @@
+# 파일 목록을 불러오는 방법 list.files()
+#dplyr 패키지 안에 들어잇는 함수들 
+#filter()	지정한 조건식에 맞는 데이터 추출	subset()
+#select()	열의 추출	data[, c(“Year”, “Month”)]
+#mutate()	열 추가	transform()
+#arrange()	정렬	order(), sort()
+#summarise()	집계	aggregate()
+#KoNLP를 사용하면 순수한글로 데이터처리가 된다.
 list.files()
 install.packages("dplyr")
 install.packages("stringer")
@@ -7,18 +15,25 @@ library(dplyr)
 library(stringr)
 library(RColorBrewer)
 
-
+#csv 파일을 불러와서 TASTE3에 저장
 TASTE3<-read.csv("test3.csv")
 TASTE3
+#불러온 데이터 중에서 DR_TASTE에 해당하는 열을 가져와서 저장
 TASTE3<-TASTE3 %>% select(DR_TASTE)
 View(TASTE3)
 library(KoNLP)
+#저장한 데이터를 명사로 추출
 TASTE3<-extractNoun(TASTE3)
 TASTE3
 View(TASTE3)
 TASTE3<-cbind(x, y)
 TASTE3
 View(TASTE3)
+#저장한 데이터를 xlsx 형식으로 export하기 
+#제대로 된 데이터가 아니면 내보내기 힘들다 이번 데이터는 문장을 명사로 쪼개서 저장해 리스트 형태로 나온다 
+# 그래서 리스트 형식의 데이터가 출력되는데 이건 데이터 프레임으로 보기 어려운듯 
+# as.data.frame() 함수를 사용하면 강제 데이터프레임으로 형변환을 시키는데 해보면 row 0 column 0 으로 나온다. 
+#아무튼 머리가 아프고 안되는 것 같으면 빠르게 파이썬으로 넘어가자! 
 install.packages("writexl")
 library("writexl")
 install.packages("xlsx")
